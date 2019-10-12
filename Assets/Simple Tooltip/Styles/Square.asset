@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75db2f2efac6dc34f84a15cb5966fd71, type: 3}
+  m_Name: Square
+  m_EditorClassIdentifier: 
+  slicedSprite: {fileID: 0}
+  color: {r: 0.9056604, g: 0.6626532, b: 0.55108577, a: 1}
+  fontAsset: {fileID: 0}
+  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  fontSize: 32
+  fontStyles:
+  - tag: '`'
+    color: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
+    bold: 0
+    italic: 0
+    underline: 0
+    strikethrough: 0
+  - tag: ~
+    color: {r: 0.1792453, g: 0.1792453, b: 0.1792453, a: 0}
+    bold: 1
+    italic: 0
+    underline: 0
+    strikethrough: 0
+  - tag: '@'
+    color: {r: 1, g: 1, b: 1, a: 0}
+    bold: 1
+    italic: 0
+    underline: 0
+    strikethrough: 0
