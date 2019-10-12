@@ -19,13 +19,16 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         eventSystem = FindObjectOfType<EventSystem>();
         tooltipController = FindObjectOfType<STController>();
+
+        // Add a new tooltip prefab if one does not exist yet
         if (!tooltipController)
         {
             tooltipController = AddTooltipPrefabToScene();
         }
         if (!tooltipController)
         {
-            Debug.LogWarning("Could not load the tooltip.");
+            Debug.LogWarning("Could not find the Tooltip prefab");
+            Debug.LogWarning("Make sure you don't have any other prefabs named `SimpleTooltip`");
         }
 
         if (GetComponent<RectTransform>())
@@ -44,9 +47,9 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         tooltipController.ShowTooltip();
     }
 
-    private static STController AddTooltipPrefabToScene()
+    public static STController AddTooltipPrefabToScene()
     {
-        return Instantiate(Resources.Load<GameObject>("Tooltip")).GetComponentInChildren<STController>();
+        return Instantiate(Resources.Load<GameObject>("SimpleTooltip")).GetComponentInChildren<STController>();
     }
 
     private void OnMouseOver()
@@ -90,8 +93,12 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         showing = true;
         cursorInside = true;
+
+        // Update the text for both layers
         tooltipController.SetCustomStyledText(infoLeft, simpleTooltipStyle, STController.TextAlign.Left);
         tooltipController.SetCustomStyledText(infoRight, simpleTooltipStyle, STController.TextAlign.Right);
+
+        // Then tell the controller to show it
         tooltipController.ShowTooltip();
     }
 
@@ -106,14 +113,21 @@ public class SimpleTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     private void Reset()
     {
+        // Load the default style if none is specified
         if (!simpleTooltipStyle)
             simpleTooltipStyle = Resources.Load<SimpleTooltipStyle>("STDefault");
+
+        // If UI, nothing else needs to be done
         if (GetComponent<RectTransform>())
             return;
 
+        // If has a collider, nothing else needs to be done
         if (GetComponent<Collider>())
             return;
 
+        // There were no colliders found when the component is added so we'll add a box collider by default
+        // If you are making a 2D game you can change this to a BoxCollider2D for convenience
+        // You can obviously still swap it manually in the editor but this should speed up development
         gameObject.AddComponent<BoxCollider>();
     }
 }

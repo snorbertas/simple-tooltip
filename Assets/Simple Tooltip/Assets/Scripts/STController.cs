@@ -17,6 +17,7 @@ public class STController : MonoBehaviour
     
     private void Awake()
     {
+        // Load up both text layers
         var tmps = GetComponentsInChildren<TextMeshProUGUI>();
         for(int i = 0; i < tmps.Length; i++)
         {
@@ -27,8 +28,11 @@ public class STController : MonoBehaviour
                 toolTipTextRight = tmps[i];
         }
 
+        // Keep a reference for the panel image and transform
         panel = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
+
+        // Hide at the start
         HideTooltip();
     }
 
@@ -40,13 +44,18 @@ public class STController : MonoBehaviour
 
     private void ResizeToMatchText()
     {
+        // Find the biggest height between both text layers
         var bounds = toolTipTextLeft.textBounds;
         float biggestY = toolTipTextLeft.textBounds.size.y;
         float rightY = toolTipTextRight.textBounds.size.y;
         if (rightY > biggestY)
             biggestY = rightY;
+
+        // Dont forget to add the margins
         var margins = toolTipTextLeft.margin.y * 2;
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x, biggestY + margins); // <- 14 is to take to account the extra 7 unitys of padding
+
+        // Update the height of the tooltip panel
+        rect.sizeDelta = new Vector2(rect.sizeDelta.x, biggestY + margins);
     }
 
     private void UpdateShow()

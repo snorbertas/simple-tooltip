@@ -264,7 +264,7 @@ MonoBehaviour:
 
 
     Not only that, but you can also ~easily `and $comfortably `apply different colors
-    by defining your own tags. See the RPG Demo example for some inspiration!'
+    by defining your own tags. Hover trough the cubes bellow for some inspiration!'
   infoRight: 
 --- !u!114 &159376745
 MonoBehaviour:
@@ -670,7 +670,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912221034}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -959.3, y: -551.2516, z: 214.64685}
+  m_LocalPosition: {x: -959.3, y: -551.2516, z: 214.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 179875426}
@@ -779,7 +779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986944810}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -957.72, y: -551.56, z: 215.2}
+  m_LocalPosition: {x: -957.72, y: -551.28, z: 214.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 179875426}
@@ -871,7 +871,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1017560298}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -954.31, y: -551.43, z: 215.11}
+  m_LocalPosition: {x: -954.64, y: -551.26, z: 214.91}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 179875426}
@@ -999,7 +999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107370845}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -960.85, y: -551.2516, z: 214.64685}
+  m_LocalPosition: {x: -960.85, y: -551.2516, z: 214.748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 179875426}
@@ -1193,7 +1193,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153968179}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -956.25, y: -551.20996, z: 214.73}
+  m_LocalPosition: {x: -956.25, y: -551.25, z: 214.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 179875426}
@@ -1325,10 +1325,10 @@ RectTransform:
   m_Father: {fileID: 2023986552}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000012398, y: -426.3}
-  m_SizeDelta: {x: 250.3, y: 92.4}
+  m_AnchorMin: {x: 0.31587502, y: 0.09162963}
+  m_AnchorMax: {x: 0.68418753, y: 0.17977779}
+  m_AnchoredPosition: {x: -0.000091552734, y: 3.5}
+  m_SizeDelta: {x: -0.30004883, y: -2.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1405238008
 MonoBehaviour:
