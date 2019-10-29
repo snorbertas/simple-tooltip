@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Simple Tooltip/Demo/Example Tooltips.unity
+    guid: a1ed8ebc959b78c4d9e0a39bfc6f837d
   m_configObjects: {}

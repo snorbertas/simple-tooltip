@@ -14,6 +14,7 @@ public class STController : MonoBehaviour
     private RectTransform rect;
     private int showInFrames = -1;
     private bool showNow = false;
+    private float originalWidth;
     
     private void Awake()
     {
@@ -31,6 +32,9 @@ public class STController : MonoBehaviour
         // Keep a reference for the panel image and transform
         panel = GetComponent<Image>();
         rect = GetComponent<RectTransform>();
+
+        // Remember original width
+        originalWidth = rect.sizeDelta.x;
 
         // Hide at the start
         HideTooltip();
@@ -54,8 +58,18 @@ public class STController : MonoBehaviour
         // Dont forget to add the margins
         var margins = toolTipTextLeft.margin.y * 2;
 
+        // Also reduce width if text is small
+        float widthLeft = Mathf.Clamp(toolTipTextRight.GetPreferredValues().x + toolTipTextLeft.GetPreferredValues().x + margins, 0, rect.sizeDelta.x);
+        float widthRight = Mathf.Clamp(toolTipTextRight.GetPreferredValues().x + margins, 0, rect.sizeDelta.x);
+        float width = Mathf.Max(widthLeft, widthRight);
+
         // Update the height of the tooltip panel
-        rect.sizeDelta = new Vector2(rect.sizeDelta.x, biggestY + margins);
+        rect.sizeDelta = new Vector2(width, biggestY + margins);
+    }
+
+    private void ResetWidth()
+    {
+        rect.sizeDelta = new Vector2(originalWidth, rect.sizeDelta.y);
     }
 
     private void UpdateShow()
@@ -68,7 +82,28 @@ public class STController : MonoBehaviour
 
         if (showNow)
         {
-            rect.anchoredPosition = Input.mousePosition;
+            // If it doesn't fit on the right, clamp it
+            Vector2 showPosition = Input.mousePosition;
+            showPosition.x = Mathf.Clamp(showPosition.x, 0, Screen.width - rect.sizeDelta.x);
+
+            // Vertical offset will be around 5% of screen height
+            // This will avoid overlapping with finger on mobile or cursor icon on PC
+            float offsetY = Screen.height * 0.05f;
+
+            // Bellow cursor
+            if (showPosition.y + rect.sizeDelta.y + offsetY > Screen.height)
+            {
+                showPosition.y -= (rect.sizeDelta.y + offsetY);
+            }
+
+            // Above cursor
+            else
+            {
+                showPosition.y += offsetY;
+            }
+
+            // Update position
+            rect.anchoredPosition = showPosition;
         }
 
         showInFrames -= 1;
@@ -81,6 +116,7 @@ public class STController : MonoBehaviour
             toolTipTextLeft.text = text;
         if (align == TextAlign.Right)
             toolTipTextRight.text = text;
+        ResetWidth();
         ResizeToMatchText();
     }
 
@@ -112,6 +148,7 @@ public class STController : MonoBehaviour
             toolTipTextLeft.text = text;
         if (align == TextAlign.Right)
             toolTipTextRight.text = text;
+        ResetWidth();
         ResizeToMatchText();
     }
 
